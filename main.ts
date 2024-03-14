@@ -1,5 +1,6 @@
 import ImageToUrl from "@epi/image-to-url";
-import ImageToWebp from "@epi/image-to-webp";
+// import ImageToWebp from "@epi/image-to-webp";
+import sharp from "npm:sharp";
 
 const API_KEY = "910a1b20168ef28376f3df239b16bdd7";
 
@@ -49,7 +50,7 @@ app.post("/", async (ctx: Context) => {
   if (ext != "png" && ext != "jpg") {
     return ctx.text("Invalid File Type: " + ext);
   }
-  const webp = await ImageToWebp(buffer, ext);
+  const webp = await sharp(buffer).webp().toBuffer();
   const webpFile = new File([webp], image.name + ".webp", {
     type: "image/webp",
   });
