@@ -1,0 +1,20 @@
+{
+  "lock": false,
+  "tasks": {
+    "start": "deno run -A main.ts"
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
+    }
+  },
+  "imports": {
+    "$std/": "https://deno.land/std@0.211.0/",
+    "@epi/image-to-url": "jsr:@epi/image-to-url",
+    "@epi/image-to-webp": "jsr:@epi/image-to-webp",
+    "@kyiro/hono": "jsr:@kyiro/hono@^0.1.1"
+  }
+}
