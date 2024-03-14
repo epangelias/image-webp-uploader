@@ -1,6 +1,6 @@
 import ImageToUrl from "@epi/image-to-url";
 // import ImageToWebp from "@epi/image-to-webp";
-import sharp from "npm:sharp";
+import sharp from "npm:sharp@0.33.2";
 
 const API_KEY = "910a1b20168ef28376f3df239b16bdd7";
 
