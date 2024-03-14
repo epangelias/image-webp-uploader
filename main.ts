@@ -1,6 +1,6 @@
 import ImageToUrl from "@epi/image-to-url";
 // import ImageToWebp from "@epi/image-to-webp";
-import sharp from "npm:sharp@0.33.2";
+// import sharp from "npm:sharp@0.33.2";
 
 const API_KEY = "910a1b20168ef28376f3df239b16bdd7";
 
@@ -45,16 +45,16 @@ app.get("/", (ctx: Context) => {
 app.post("/", async (ctx: Context) => {
   const file = await ctx.req.formData();
   const image = file.get("image") as File;
-  const buffer = new Uint8Array(await image.arrayBuffer());
-  const ext = image.name.split(".").at(-1);
-  if (ext != "png" && ext != "jpg") {
-    return ctx.text("Invalid File Type: " + ext);
-  }
-  const webp = await sharp(buffer).webp().toBuffer();
-  const webpFile = new File([webp], image.name + ".webp", {
-    type: "image/webp",
-  });
-  const url = await ImageToUrl(webpFile, API_KEY);
+  // const buffer = new Uint8Array(await image.arrayBuffer());
+  // const ext = image.name.split(".").at(-1);
+  // if (ext != "png" && ext != "jpg") {
+  //   return ctx.text("Invalid File Type: " + ext);
+  // }
+  // const webp = await sharp(buffer).webp().toBuffer();
+  // const webpFile = new File([webp], image.name + ".webp", {
+  //   type: "image/webp",
+  // });
+  const url = await ImageToUrl(image, API_KEY);
   return ctx.html(
     `<a href="/"><button>Upload Another</button></a><br/><br/><input autofocus value="${url}" onload="this.focus()"><br/><br/><img src="${url}"/>${style}`,
   );
